@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<component name="LoadingIndicator" extends="Group">
+
+<interface>
+    <field id="imageUri" type="string" alias="image.uri" value="pkg:/components/screens/LoadingIndicator/loader.png"/>
+
+    <field id="imageWidth" type="float" onChange="onImageWidthChange"/>
+    <field id="imageHeight" type="float" onChange="onImageHeightChange"/>
+    <field id="clockwise" type="bool" value="true" onChange="changeRotationDirection"/>
+    <field id="spinInterval" type="time" alias="rotationAnimation.duration" value="3"/>
+    <field id="centered" type="bool" value="true" onChange="updateLayout"/>
+    <field id="backgroundColor" type="color" alias="background.color" value="0x000000"/>
+    <field id="backgroundUri" type="string" onChange="onBackgroundImageChange"/>
+    <field id="backgroundOpacity" type="float" alias="background.opacity" value="0.4" onChange="onBackgroundOpacityChange"/>
+    <field id="text" type="string" alias="text.text" onChange="onTextChange"/>
+    <field id="textColor" type="color" alias="text.color"/>
+    <field id="spacing" type="float" value="30"/>
+    <field id="textPadding" type="float" onChange="onTextPaddingChange"/>
+    <field id="font" type="node" alias="text.font"/>
+    <field id="width" type="float" onChange="updateLayout"/>
+    <field id="height" type="float" onChange="updateLayout"/>
+    <field id="state" type="string"/>
+    <field id="control" type="string" onChange="onControlChange"/>
+    <field id="fadeInterval" type="time"/>
+</interface>
+<script type="text/brightscript" uri="pkg:/components/screens/LoadingIndicator/LoadingIndicator.brs"/>
+<children>
+    <Group
+        id="loadingIndicatorGroup">
+        <Rectangle
+            id="background"/>
+        <Poster
+            id="backgroundImage"/>
+        <Group
+            id="loadingGroup">
+            <Poster id="image">
+                <Animation
+                    id="rotationAnimation"
+                    repeat="true"
+                    easeFunction="linear">
+                    <FloatFieldInterpolator
+                        id="rotationAnimationInterpolator"
+                        key="[1, 0]"
+                        keyValue="[0, 6.283]"
+                        fieldToInterp="image.rotation"/>
+                </Animation>
+            </Poster>
+            <Label
+                id="text"
+                horizAlign="center"/>
+        </Group>
+        <Animation
+            id="fadeAnimation"
+            repeat="false"
+            easeFunction="linear">
+            <FloatFieldInterpolator
+                keyValue="[1, 0]"
+                key="[0, 1]"
+                fieldToInterp="loadingIndicatorGroup.opacity"/>
+        </Animation>
+    </Group>
+</children>
+
+</component>

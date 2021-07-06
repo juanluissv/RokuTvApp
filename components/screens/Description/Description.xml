@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?> 
+<component name="Description" extends="LayoutGroup">
+    <interface>
+        <field id="Title" type="node"/>
+        <field id="Content"         type="node" onChange="OnContentChanged"/>
+    </interface> 
+    <script type="text/brightscript" uri="pkg:/components/screens/Description/Description.brs" />
+    <children> 
+        <Label
+            id="Title"
+            color="0xFFFFFF"
+            translation="[0,0]"
+            text=""/> 
+    </children>
+</component>
