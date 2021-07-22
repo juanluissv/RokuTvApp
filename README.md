@@ -1,4 +1,4 @@
-<h2 > Video Streaming Roku TV Application </h2>
+<h2 > Video Streaming Roku TV Application </h2> 
 
  <img src="https://raw.githubusercontent.com/juanluissv/RokuTvApp/master/screen.png" />
 
